@@ -1,0 +1,90 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">Тренировки</div>
+    </ons-toolbar>
+
+    <div class="container">
+        <!-- Списък 1 -->
+        <div class="list-container">
+            <ons-list id="foodList">
+                <ons-list-header>Тренировки</ons-list-header>
+
+                <ons-list-item>
+                    Набиранки - изгаряш 5 калории на 1бр.
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addWorkout('Набиранки - изгаряш 5 калории на 1бр')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item>
+                    Кофички - изгаряш 5 калории на 1бр.
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addWorkout('Кофички - изгаряш 5 калории на 1бр')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item>
+                    Коремни преси - изгаряш 8 калории на 1бр.
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addWorkout('Коремни преси - изгаряш 8 калории на 1бр')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+            </ons-list>
+        </div>
+
+        <!-- Списък 2 -->
+        <div class="list-container">
+            <ons-list id="selectedWorkoutsList">
+                <ons-list-header>Избрани упражнения</ons-list-header>
+
+                <ons-list-item id="NoAddedItems">Няма избрани упражнения</ons-list-item>
+            </ons-list>
+
+            <div style="margin-top:5px; display:none" id="caloriesContainter">
+                <ons-button onclick="calculateCalories()" id="calculate-btn">Изчисли калории</ons-button>
+
+                <ons-card>
+                    <p id="totalCalories">Общо изгорени калории: <span id="total-calories">0</span></p>
+                </ons-card>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function calculateCalories(){
+
+        };
+
+        // Массив за избрани храни
+        let selectedWorkouts = [];
+
+        // Функция за добавяне на храна в списъка с избрани храни
+        function addWorkout(workout) {
+            if (!selectedWorkouts.includes(workout)) {
+                selectedWorkouts.push(workout);
+
+                const selectedWorkoutsList = document.getElementById('selectedWorkoutsList');
+
+                let listItem = document.createElement('ons-list-item');
+                listItem.innerHTML = `
+                    ${workout}
+                    <div class="right">
+                        <input id="workout" type="number" placeholder="Количество" min="0" style="width: 100px;" />
+                    </div>
+                `;
+                selectedWorkoutsList.appendChild(listItem);
+
+                const noAddedItemsElement = document.getElementById('NoAddedItems');
+
+                if(noAddedItemsElement.style.display !== 'none')
+                    noAddedItemsElement.style.display = 'none';
+            }
+        }
+    </script>
+</ons-page>
+
+

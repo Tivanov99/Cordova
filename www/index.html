@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tabbed Navigation</title>
+
+    <!-- Onsen UI CSS и JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onsenui/css/onsenui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/onsenui/css/onsen-css-components.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="././css/index.css"> <!-- Тук добавяме CSS файла -->
+
+</head>
+
+<body>
+    <!-- Tabbar: навигационната лента в началото на страницата -->
+    <ons-tabbar swipeable position="top">
+        <ons-tab label="Начало" icon="md-home" page="home.html" active></ons-tab>
+        <ons-tab label="Хранителен режим" icon="md-cutlery" page="meal-plan.html"></ons-tab>
+        <ons-tab label="Тренировки" icon="md-fitness-center" page="workout.html"></ons-tab>
+        <ons-tab label="История" icon="md-assignment" page="history.html"></ons-tab>
+    </ons-tabbar>
+</body>
+</html>

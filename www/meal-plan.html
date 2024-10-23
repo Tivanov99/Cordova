@@ -1,0 +1,94 @@
+
+<ons-page>
+    <ons-toolbar>
+        <div class="center">Два списъка един до друг</div>
+    </ons-toolbar>
+
+    <div class="container">
+        <!-- Списък 1 -->
+        <div class="list-container">
+            <ons-list id="foodList">
+                <ons-list-header>Налични храни</ons-list-header>
+
+                <ons-list-item>
+                    Ябълка (50 калории)
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addFood('Ябълка - 50 калории')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item>
+                    Банан (70 калории)
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addFood('Банан - 70 калории')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+                <ons-list-item>
+                    Яйце (100 калории)
+                    <div class="right">
+                        <ons-button modifier="quiet" onclick="addFood('Яйце - 100 калории')">Добави</ons-button>
+                    </div>
+                </ons-list-item>
+
+            </ons-list>
+        </div>
+
+        <!-- Списък 2 -->
+        <div class="list-container">
+            <ons-list id="selectedFoodList">
+                <ons-list-header>Избрани храни</ons-list-header>
+
+                <ons-list-item id="NoAddedItems">Няма избрани храни</ons-list-item>
+            </ons-list>
+
+            <div style="margin-top:5px; display:none" id="workoutContainer">
+                <ons-button onclick="calculateCalories()" id="calculate-btn">Изчисли калории</ons-button>
+
+                <ons-card>
+                    <p id="totalCalories">Общо калории: <span id="total-calories">0</span></p>
+                </ons-card>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function calculateCalories(){
+
+        }
+
+        // Массив за избрани храни
+        let selectedFoods = [];
+
+        // Функция за добавяне на храна в списъка с избрани храни
+        function addFood(food) {
+            if (!selectedFoods.includes(food)) {
+                selectedFoods.push(food);
+
+                const selectedFoodList = document.getElementById('selectedFoodList');
+
+                let listItem = document.createElement('ons-list-item');
+                listItem.innerHTML = `
+                    ${food}
+                    <div class="right">
+                        <input id="food" type="number" placeholder="Количество" min="0" style="width: 100px;" />
+                    </div>
+                `;
+                selectedFoodList.appendChild(listItem);
+
+                const noAddedItemsElement = document.getElementById('NoAddedItems');
+                if(noAddedItemsElement.style.display !== 'none')
+                 noAddedItemsElement.style.display = 'none';
+
+                const workoutContainer = document.getElementById('workoutContainer');
+                if(workoutContainer.style.display !== 'none')
+                    workoutContainer.style.display = 'block';
+
+            }
+        }
+    </script>
+</ons-page>
+
